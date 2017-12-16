@@ -1,0 +1,59 @@
+#ISD afv6
+# ISD version: 4.21.2.201710261900-989
+
+# Application configuration
+stackId: com.silabs.sdk.stack.btmesh
+stackRoot: C:\SiliconLabs\SimplicityStudio\v4\developer\sdks\blemesh\v1.1
+appId: btMesh
+frameworkRoot: app\bluetooth_dev\appbuilder\fwk_bt_mesh
+architecture: efr32~family[B]~series[1]~device_configuration[3]~performance[P]~radio[632]~flash[512K]~temp[G]~package[M]~pins[48]+BRD4104A+gcc
+exactArchitectureToolchain: com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:4.9.3.20150529
+deviceName: soc-btmesh-switch
+sourceSampleAppId: soc-btmesh-switch
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+
+# UI customization
+hiddenLayoutElements: plugins,callbacks
+
+# Plugin configuration
+appPlugin: bg_stack=false
+appPlugin: bgapi=false
+appPlugin: bt_mesh_stack=true
+appPlugin: cmsis=true
+appPlugin: command_interpreter=false
+appPlugin: device=true
+appPlugin: emdrv=true
+appPlugin: emlib=true
+appPlugin: gecko_bootloader=false
+appPlugin: glib=true
+appPlugin: kit=true
+appPlugin: kit_board=true
+appPlugin: kit_flashpwr=true
+appPlugin: kit_ioexpander=false
+appPlugin: kit_lcd=true
+appPlugin: legacy_ble_ota_bootloader=false
+appPlugin: rail=true
+appPlugin: serial_vcom=true
+appPlugin: thunderboard_sense_drivers=false
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(PROJECT_RELATIVE):main.c
+PATH(PROJECT_RELATIVE):gatt_db.c
+PATH(PROJECT_RELATIVE):dcd_switch.c
+PATH(PROJECT_RELATIVE):src\InitDevice.c
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+}
+{setupId:macros
+-D__STACK_SIZE=0xa00
+-D__HEAP_SIZE=0x1200
+}
+{setupId:template
+}
+
+# Plugin options

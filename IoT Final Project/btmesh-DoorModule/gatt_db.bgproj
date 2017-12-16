@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project device="bluegecko">
+
+    <gatt out="src/gatt_db.c" header="src/gatt_db.h" prefix="gattdb_">
+
+        <!-- Capabilities for provisioning and proxying -->
+        <capabilities_declare>
+            <capability enable="false">mesh_provisioning_service</capability>
+            <capability enable="false">mesh_proxy_service</capability>
+        </capabilities_declare>
+
+ 		<!-- Bluetooth LE GAP service -->
+        <service uuid="1800">
+            <description>Generic Access Profile</description>
+            <characteristic uuid="2a00" id="device_name">
+                <properties read="true" const="false"/>
+                <value length="20" variable_length="true">BlueGecko Mesh Demo </value>
+            </characteristic>
+            <characteristic uuid="2a01">
+                <properties read="true" const="true" />
+                <value type="hex">4003</value>
+            </characteristic>
+        </service>
+        
+        <!-- Bluetooth LE Device Information service -->
+        <service type="primary" uuid="180A" id="manufacturer">
+            <characteristic uuid="2A29">
+                <properties read="true" const="true" />
+                <value>Silicon Labs</value>
+            </characteristic>
+        </service>
+
+		<!-- Bluetooth mesh provisioning service -->
+        <service uuid="1827" advertise="true">
+            <description>Mesh Provisioning Service</description>
+
+            <capabilities>
+              <capability>mesh_provisioning_service</capability>
+            </capabilities>
+
+            <!-- Data in characteristic -->
+            <characteristic uuid="2adb">
+                <properties write_no_response="true"/>
+                <value type="user"/>
+            </characteristic>
+
+            <!-- Data out characteristic -->
+            <characteristic uuid="2adc">
+                <properties notify="true"/>
+                <value type="user"/>
+            </characteristic>
+        </service>
+
+		<!-- Bluetooth mesh proxy service -->
+        <service uuid="1828" advertise="true">
+            <description>Mesh Proxy Service</description>
+
+            <capabilities>
+                <capability>mesh_proxy_service</capability>
+            </capabilities>
+
+            <!-- Data in characteristic -->
+            <characteristic uuid="2add">
+                <properties write_no_response="true"/>
+                <value type="user"/>
+            </characteristic>
+
+            <!-- Data out characteristic -->
+            <characteristic uuid="2ade">
+                <properties notify="true"/>
+                <value type="user"/>
+            </characteristic>
+        </service>
+        
+    </gatt>
+
+</project>
