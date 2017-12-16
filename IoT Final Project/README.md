@@ -1,5 +1,5 @@
-# IoT-Firmware
-
+# IoT-Firmware Bluetooth Mesh Final Project
+ 
 The folder consists of the Final project developed during my course "ECEN 5823 IoT Embedded Firmware" at University of Colorado, Boulder. 
 #foreverbuff 
 #gobuffs
