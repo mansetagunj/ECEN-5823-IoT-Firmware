@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/sls/hc/document/device.ecore" name="EFR32MG12P433F1024GL125" partId="mcu.arm.efr32.mg12.efr32mg12p433f1024gl125">
+  <mode name="DefaultMode">
+    <property object="I2C0" propertyId="ABPeripheral.included" value="true"/>
+    <property object="PC10" propertyId="ports.settings.pinmode" value="Wired-and pullup filter"/>
+    <property object="PC11" propertyId="ports.settings.pinmode" value="Wired-and pullup filter"/>
+    <property object="PF2" propertyId="ports.settings.pinmode" value="Push-pull"/>
+    <property object="PB10" propertyId="ports.settings.custompinname" value="SENSOR_ENABLE"/>
+    <property object="PB10" propertyId="ports.settings.dout" value="1"/>
+    <property object="PB10" propertyId="ports.settings.filter" value="Enabled"/>
+    <property object="PB10" propertyId="ports.settings.pinmode" value="Push-pull"/>
+    <property object="PB10" propertyId="ports.settings.pulldirection" value="Pullup"/>
+    <property object="PB10" propertyId="ports.settings.pullup" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.enable.scl" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.enable.sda" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.location.i2c0_sclloc" value="14"/>
+    <property object="PORTIO" propertyId="portio.i2c0.location.i2c0_sdaloc" value="16"/>
+  </mode>
+  <modeTransition>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.target" value="DefaultMode"/>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.source" value="RESET"/>
+  </modeTransition>
+</device:XMLDevice>

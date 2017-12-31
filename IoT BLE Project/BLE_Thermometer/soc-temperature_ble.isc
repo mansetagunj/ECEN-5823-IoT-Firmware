@@ -1,0 +1,147 @@
+#ISD afv6
+# ISD version: 4.21.2.201710261900-989
+
+# Application configuration
+stackId: com.silabs.sdk.stack.super
+stackRoot: C:\SiliconLabs\SimplicityStudio\v4\developer\sdks\gecko_sdk_suite\v1.1
+appId: ble
+frameworkRoot: app\bluetooth_2.4\appbuilder\fwk
+architecture: efr32~family[B]~series[1]~device_configuration[1]~performance[B]~radio[232]~flash[256K]~temp[G]~package[M]~pins[56]+BRD4302A+gcc
+deviceName: soc-thermometer
+sourceSampleAppId: soc-thermometer
+generationDirectory: PATH(ISC_RELATIVE):.
+
+# Devices
+
+# UI customization
+hiddenLayoutElements: plugins,callbacks
+
+# Plugin configuration
+appPlugin: bg_stack=true
+appPlugin: bgapi=true
+appPlugin: cmsis=true
+appPlugin: codegen_0=false
+appPlugin: command_interpreter=false
+appPlugin: command_interpreter_handler=false
+appPlugin: crc16_ccitt=false
+appPlugin: device=true
+appPlugin: emdrv=true
+appPlugin: emlib=true
+appPlugin: gecko_bootloader=false
+appPlugin: glib=false
+appPlugin: kit=true
+appPlugin: kit_board=false
+appPlugin: kit_flashpwr=true
+appPlugin: kit_ioexpander=true
+appPlugin: kit_lcd=false
+appPlugin: legacy_ble_ota_bootloader=true
+appPlugin: mpsi=false
+appPlugin: mpsi-ipc=false
+appPlugin: mpsi-storage=false
+appPlugin: mpsi_ble_transport_server=false
+appPlugin: rail=true
+appPlugin: serial_vcom=false
+appPlugin: slot-manager=false
+appPlugin: stack_bridge=false
+appPlugin: thunderboard_sense_drivers=false
+appPlugin: uartdrv=false
+
+# Setup configurations
+{setupId:additionalFiles
+PATH(PROJECT_RELATIVE):src\InitDevice.c
+PATH(PROJECT_RELATIVE):main.c
+}
+{setupId:bleGattConfigurator
+<?xml version="1.0" encoding="UTF-8"?><project>
+  <gatt generic_attribute_service="true" header="gatt_db.h" name="Custom BLE GATT" out="gatt_db.c" prefix="gattdb_">
+    <service advertise="false" name="Generic Access" requirement="mandatory" sourceId="org.bluetooth.service.generic_access" type="primary" uuid="1800">
+      <informativeText>Abstract: The generic_access service contains generic information about the device. All available Characteristics are readonly. </informativeText>
+      <characteristic id="device_name" name="Device Name" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
+        <informativeText/>
+        <value length="19" type="utf-8" variable_length="false">Thermometer Gunj</value>
+        <properties read="true" read_requirement="optional" write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic name="Appearance" sourceId="org.bluetooth.characteristic.gap.appearance" uuid="2A01">
+        <informativeText>Abstract: The external appearance of this device. The values are composed of a category (10-bits) and sub-categories (6-bits). </informativeText>
+        <value length="2" type="hex" variable_length="false">0003</value>
+        <properties const="true" const_requirement="optional" read="true" read_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Device Information" requirement="mandatory" sourceId="org.bluetooth.service.device_information" type="primary" uuid="180A">
+      <informativeText>Abstract: The Device Information Service exposes manufacturer and/or vendor information about a device. Summary: This service exposes manufacturer information about a device. The Device Information Service is instantiated as a Primary Service. Only one instance of the Device Information Service is exposed on a device. </informativeText>
+      <characteristic name="Manufacturer Name String" sourceId="org.bluetooth.characteristic.manufacturer_name_string" uuid="2A29">
+        <informativeText>Abstract: The value of this characteristic is a UTF-8 string representing the name of the manufacturer of the device. </informativeText>
+        <value length="12" type="utf-8" variable_length="false">Silicon Labs</value>
+        <properties const="true" const_requirement="optional" read="true" read_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="false" name="Silicon Labs OTA" requirement="mandatory" sourceId="com.silabs.service.ota" type="primary" uuid="1D14D6EE-FD63-4FA1-BFA4-8F47B42119F0">
+      <informativeText>Abstract: The Silicon Labs OTA Service enables over-the-air firmware update of the device. </informativeText>
+      <characteristic id="ota_control" name="Silicon Labs OTA Control" sourceId="com.silabs.characteristic.ota_control" uuid="F7BF3564-FB6D-4E53-88A4-5E37E0326063">
+        <informativeText>Abstract: Silicon Labs OTA Control. </informativeText>
+        <value length="1" type="user" variable_length="true"/>
+        <properties write="true" write_requirement="optional"/>
+      </characteristic>
+      <characteristic name="Silicon Labs OTA Data" sourceId="custom.type" uuid="984227f3-34fc-4045-a5d0-2c581f81a153">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="55" type="hex" variable_length="false"/>
+        <properties write_no_response="true" write_no_response_requirement="optional"/>
+      </characteristic>
+      <characteristic name="Silicon Labs BLE stack version" sourceId="custom.type" uuid="4f4a2368-8cca-451e-bfff-cf0e2ee23e9f">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="8" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="optional"/>
+      </characteristic>
+      <characteristic name="Silicon Labs OTA version" sourceId="custom.type" uuid="4cc07bcf-0868-4b32-9dad-ba4cc41e5316">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="hex" variable_length="false">0x00</value>
+        <properties read="true" read_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="true" id="health_thermometer" name="Health Thermometer" requirement="mandatory" sourceId="org.bluetooth.service.health_thermometer" type="primary" uuid="1809">
+      <informativeText>Abstract:  The Health Thermometer service exposes temperature and other data from a thermometer intended for healthcare and fitness applications.  Summary:  The Health Thermometer service is instantiated as a Primary Service. There are one or more instantiations of the Health Thermometer service per device claiming conformance with this specification.  </informativeText>
+      <characteristic id="temp_measurement" name="Temperature Measurement" sourceId="org.bluetooth.characteristic.temperature_measurement" uuid="2A1C">
+        <informativeText/>
+        <value length="4" type="utf-8" variable_length="false"/>
+        <properties indicate="true" indicate_requirement="mandatory"/>
+      </characteristic>
+      <characteristic id="temperature_type" name="Temperature Type" sourceId="org.bluetooth.characteristic.temperature_type" uuid="2A1D">
+        <informativeText>Abstract:  The Temperature Type characteristic is an enumeration that indicates where the temperature was measured.  Summary:  These Temperature Type values correspond to the Temperature Type descriptions used in ISO/IEEE 11073-10408-2008.  </informativeText>
+        <value length="1" type="hex" variable_length="false">3</value>
+        <properties const="false" const_requirement="optional" read="true" read_requirement="optional"/>
+      </characteristic>
+    </service>
+    <service advertise="false" id="tx_power" name="Tx Power" requirement="optional" sourceId="org.bluetooth.service.tx_power" type="primary" uuid="1804">
+      <informativeText>Abstract:  This service exposes a device's current transmit power level when in a connection.  Summary:  The Tx Power service is instantiated as a Primary Service. There is only one instance of the Tx Power service on a device. There is exactly one instance of the Tx Power Level characteristic  </informativeText>
+      <characteristic id="tx_power_level" name="Tx Power Level" sourceId="org.bluetooth.characteristic.tx_power_level" uuid="2A07">
+        <informativeText>Abstract:  The Transmit Power Level characteristic represents the current transmit power level in dBm, and the level ranges from -100 dBm to +20 dBm to a resolution of 1 dBm.  Summary:  The value of the characteristic is a signed 8 bit integer that has a fixed point exponent of 0.  Examples:  The value 0x12 is interpreted as +18dBm  The value 0xEE is interpreted as -18dBm  </informativeText>
+        <value length="2" type="utf-8" variable_length="false"/>
+        <properties read="true" read_requirement="mandatory"/>
+      </characteristic>
+    </service>
+    <service advertise="false" id="start_temp" name="Start Temp Sensor Service" requirement="mandatory" sourceId="custom.type" type="primary" uuid="58c6951c-baf0-4049-a22e-0a450391ba8b">
+      <informativeText>Custom service</informativeText>
+      <characteristic id="start_temp_cp" name="Start Temp Sensor Control Point" sourceId="custom.type" uuid="893278e6-58a6-4635-a031-844eaae7e429">
+        <informativeText>Custom characteristic</informativeText>
+        <value length="1" type="utf-8" variable_length="false"/>
+        <properties write_no_response="true" write_no_response_requirement="optional"/>
+      </characteristic>
+    </service>
+  </gatt>
+</project>
+}
+{setupId:callbackConfiguration
+}
+{setupId:hwConfig
+featureLevel=1
+active=true
+lastHwConfFileUsed=PATH(GEN_RELATIVE):efr32bg1b232f256gm56.hwconf
+}
+{setupId:macros
+}
+{setupId:mpsi
+- mappings
+- custom messages
+}
+
+# Plugin options

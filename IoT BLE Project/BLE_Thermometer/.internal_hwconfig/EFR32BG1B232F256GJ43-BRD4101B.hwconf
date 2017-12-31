@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<device:XMLDevice xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:device="http://www.silabs.com/sls/hc/document/device.ecore" name="EFR32BG1B232F256GJ43" partId="mcu.arm.efr32.bg1.efr32bg1b232f256gj43">
+  <mode name="DefaultMode">
+    <property object="I2C0" propertyId="ABPeripheral.included" value="true"/>
+    <property object="PC10" propertyId="ports.settings.pinmode" value="Wired-and pullup filter"/>
+    <property object="PC11" propertyId="ports.settings.pinmode" value="Wired-and pullup filter"/>
+    <property object="PF3" propertyId="ports.settings.custompinname" value="WAKEUP_IOEXP"/>
+    <property object="PF3" propertyId="ports.settings.dout" value="1"/>
+    <property object="PF3" propertyId="ports.settings.filter" value="Enabled"/>
+    <property object="PF3" propertyId="ports.settings.pinmode" value="Wired-and"/>
+    <property object="PF3" propertyId="ports.settings.pulldirection" value="Pullup"/>
+    <property object="PF3" propertyId="ports.settings.pullup" value="Enabled"/>
+    <property object="PF4" propertyId="ports.settings.custompinname" value="BUTTON0_LED0"/>
+    <property object="PF4" propertyId="ports.settings.pinmode" value="Input"/>
+    <property object="PF5" propertyId="ports.settings.custompinname" value="BUTTON1_LED1"/>
+    <property object="PF5" propertyId="ports.settings.pinmode" value="Input"/>
+    <property object="PF2" propertyId="ports.settings.pinmode" value="Push-pull"/>
+    <property object="PORTIO" propertyId="portio.i2c0.enable.scl" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.enable.sda" value="Enabled"/>
+    <property object="PORTIO" propertyId="portio.i2c0.location.i2c0_sclloc" value="15"/>
+    <property object="PORTIO" propertyId="portio.i2c0.location.i2c0_sdaloc" value="15"/>
+  </mode>
+  <modeTransition>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.target" value="DefaultMode"/>
+    <property object="RESET &#x2192; DefaultMode" propertyId="modeTransition.source" value="RESET"/>
+  </modeTransition>
+</device:XMLDevice>
