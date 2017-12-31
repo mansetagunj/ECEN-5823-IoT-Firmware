@@ -1,6 +1,6 @@
 # IoT Bluetooth Low Energy  
 
-The folder consists of the Bluetooth Low Enerdy project developed during my course "ECEN 5823 IoT Embedded Firmware" at University of Colorado, Boulder.   
+The folder consists of the Bluetooth Low Energy project developed during my course "ECEN 5823 IoT Embedded Firmware" at University of Colorado, Boulder.   
 #foreverbuff   
 #gobuffs
 
