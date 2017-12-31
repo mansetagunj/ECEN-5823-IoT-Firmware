@@ -1,6 +1,24 @@
 # IoT Bluetooth Low Energy  
 
-### BGM121 Blue Gecko Silicon Labs development board.   
+The folder consists of the Bluetooth Low Enerdy project developed during my course "ECEN 5823 IoT Embedded Firmware" at University of Colorado, Boulder.   
+#foreverbuff   
+#gobuffs
+
+**Feel free to use and modify the project keeping in mind the licensing and mentions about the creators.** 
+
+The  BLE_Thermometer.zip can be directly imported into the Silicon Labs Simplicity Studio using the Import option in the File menu.  
+This project makes use of the Silicon Labs example program and the Bluetooth SDK + Platform, so make sure you have installed them.  
+
+Tools and development boards used: 
+
+1. Simplicity Studio V4.1.11
+2. Silicon Labs Bluetooth SDK + Platform + Example codes
+3. Silicon Labs BGM121 + Base board + Expansion board having BMA280 accelerometer and Joystick
+4. Silicon Labs Blue Gecko application 
+    Android App Link: https://play.google.com/store/apps/details?id=com.siliconlabs.bledemo&hl=en
+    iOS App Link : https://itunes.apple.com/us/app/silicon-labs-blue-gecko-wstk/id1030932759?mt=8
+
+**Special credits to** ***Prof. Keith Graham*** **for teaching this wonderful subject and covering the concepts of IoT Firmware especially BLE and Bluetooth Mesh.**
 
 ## Objective:   
 To take the temperature measured by the on board Si7021 and communicate it via BLE to the Silicon Labs’ BlueGecko iPhone or Android phone app. 
@@ -25,7 +43,7 @@ Services :
     b. Silicon Labs OTA data
     c. Silicon Labs OTA BLE stack version
     d. Silicon Labs OTA version
-  Note: The application supports the OTA update via the Silicon Labs Blue Gecko Android/iOS application. The steps to follow are mentioned below in Section OTA Update.
+  **Note: The application supports the OTA update via the Silicon Labs Blue Gecko Android/iOS application. The steps to follow are mentioned below in Section OTA Update.
 
 ### To maximize energy savings, the Bluetooth application should change its advertising, connection interval, and slave interval to what is appropriate to the application.
 a. The Advertising min and max is 500mS  
@@ -80,10 +98,16 @@ h. The temperature set point is not reset when the joy stick button is pressed d
 ### Performing the OTA 
 1. (Android) Copy the .gbl files to your phone and store it in /SiliconLabs_BGApp/OTAFiles/(ProjectFolder)/   
    (iPhone) Copy the .gbl file to your Google Drive/iCloud Drive   
-2. Download the Blue Gecko App on your phone. Download Link : https://play.google.com/store/apps/details?id=com.siliconlabs.bledemo&hl=en  
+2. Download the Blue Gecko App on your phone. 
+    Android App Link: https://play.google.com/store/apps/details?id=com.siliconlabs.bledemo&hl=en
+    iOS App Link : https://itunes.apple.com/us/app/silicon-labs-blue-gecko-wstk/id1030932759?mt=8
+    
 3. Go to Bluetooth Browser and Connect to your device   
 4. After connecting select OTA in the menu in the top right corner.   
 5. Select the OTA files and do a full or app only OTA depending on the changes in the project    
 
 ### To perform OTA update on your own app, the pdf from the below link has steps which could be of help.   
 https://github.com/mansetagunj/IoT-Firmware/blob/master/IoT%20BLE%20Project/SiLabs%20BG%20OTA%20procedure.pdf  
+
+
+***Note: There are some Licence mentions in the Code for the software IP of Silicon Labs.***
