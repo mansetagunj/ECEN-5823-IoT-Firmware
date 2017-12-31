@@ -77,14 +77,14 @@ b. No period, so no need to have the LETIMER0 to interrupt twice per period
 c. During the LETIMER0 period interrupt, it will request, receive, and process the temperature reading from the Si7021
 
 ### Si7021 I2C temp sensor (Used I2C for interfacing the sensor):  
-a. It should be running at the lowest energy possible while enabled and while taking temperature measurements
-b. Temperature measurements should be 14-bit and calculated in degrees C
-c. The default temperature should be 15C
-d. If the temperature read from the Si7021 is below the set temperature, LED1 is latched on until cleared by pressing the joy stick button down
-e. The temperature set point should increase by 5 degrees C every time the joy stick is pressed to the right
-f. The temperature set point should decrease by 5 degrees C every time the joy stick is pressed to the left
-g. If LED1 is turned off by pressing the joy stick button down(centre) and the temperature is still below the current set point, LED1 should turn on at the next temperature measurement
-h. The temperature set point is not reset when the joy stick button is pressed down. The only function pressing the joy stick down should be to turn off LED1.
+a. It should be running at the lowest energy possible while enabled and while taking temperature measurements  
+b. Temperature measurements should be 14-bit and calculated in degrees C  
+c. The default temperature should be 15C  
+d. If the temperature read from the Si7021 is below the set temperature, LED1 is latched on until cleared by pressing the joy stick button down  
+e. The temperature set point should increase by 5 degrees C every time the joy stick is pressed to the right  
+f. The temperature set point should decrease by 5 degrees C every time the joy stick is pressed to the left  
+g. If LED1 is turned off by pressing the joy stick button down(centre) and the temperature is still below the current set point, LED1 should turn on at the next temperature measurement  
+h. The temperature set point is not reset when the joy stick button is pressed down. The only function pressing the joy stick down should be to turn off LED1.  
 
 ## OTA Update: 
 
