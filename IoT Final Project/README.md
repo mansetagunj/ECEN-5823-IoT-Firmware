@@ -16,6 +16,7 @@ Tools and development boards used:
 2. Silicon Labs Bluetooth Mesh SDK + Platform + Example codes
 3. Silicon Labs EFR32BG13 + Base board
 4. Sparkfun TSL2561 Luminosity Sensor breakout board
+5. Android phone and the Bluetooth Mesh by Silicon Labs application. Download Link : https://play.google.com/store/apps/details?id=com.siliconlabs.bluetoothmesh&hl=en
 
 Special credits to Prof. Keith Graham for teaching this wonderful subject and covering the concepts of IoT Firmware especially BLE and Bluetooth Mesh.
 
