@@ -8,7 +8,7 @@ Feel free to use and modify the project keeping in mind the licensing and mentio
 The IoT-Mesh_FinalProject.zip can be directly imported into the Silicon Labs Simplicity Studio using the Import option in the File menu.
 This project makes use of the Silicon Labs example program and the Bluetooth Mesh SDK + Platform, so make sure you have installed them.
 
-Find the Project Report for complete description about the Project.
+Find the [Project Report](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/blob/master/Smart%20Room%20IoT%20Final%20Project/Project%20report.pdf) for complete description about the Project.
 
 Tools and development boards used: 
 
