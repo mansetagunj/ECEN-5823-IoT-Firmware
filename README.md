@@ -20,7 +20,7 @@ https://www.silabs.com/products/development-tools/software/simplicity-studio
 
 Project Index:
 
-1. [Smart Room](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/tree/master/Smart%20Room%20IoT%20Final%20Project)
-2. [Bluetooth Low Energy](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/tree/master/Wireless%20Health%20Thermometer%20IoT%20BLE%20Project)
+1. [Smart Room - Bluetooth Mesh](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/tree/master/Smart%20Room%20IoT%20Final%20Project)
+2. [Wireless Thermometer - Bluetooth Low Energy](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/tree/master/Wireless%20Health%20Thermometer%20IoT%20BLE%20Project)
 
 
