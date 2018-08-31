@@ -49,39 +49,39 @@ def signal_handler(sig, frame):
 def main():
     signal.signal(signal.SIGINT, signal_handler)
 
-    ser = serial.Serial('COM3', 9600)
-    ser.flushInput()
+    serial_h = serial.Serial('COM3', 9600)
+    serial_h.flushInput()
 
     plt.style.use('ggplot')
 
     x_vec = np.linspace(0,size,size+1)[0:-1]
     y_vec = np.zeros(len(x_vec))
-    line1 = []
+    readings_vec = []
 
     print("Real Time Temperature Plotter")
     while True:
         try:
-            ser_bytes = ser.readline()
-            print('LOG:{}'.format(ser_bytes))
-            if b'START_DATA' in ser_bytes:
+            serial_bytes = serial_h.readline()
+            print('LOG:{}'.format(serial_bytes))
+            if b'START_DATA' in serial_bytes:
                 break;
         except KeyboardInterrupt:
             break;
         
     while True:
         try:
-            ser_bytes = ser.readline()
+            serial_bytes = serial_h.readline()
             try:
-                decoded_bytes = float(ser_bytes[0:len(ser_bytes)-2].decode("utf-8"))
-                print('Current Temp: {} Celcius'.format(decoded_bytes), end="\r", flush=True)
+                temperature_C = float(serial_bytes[0:len(serial_bytes)-2].decode("utf-8"))
+                print('Current Temp: {} Celcius'.format(temperature_C), end="\r", flush=True)
             except:
                 continue
 
             writer = csv.writer(f,delimiter=",")
-            writer.writerow([i,decoded_bytes])
+            writer.writerow([i,temperature_C])
             
-            y_vec[-1] = decoded_bytes
-            line1 = live_plotter(x_vec,y_vec,line1, "Temperature Real-Time Data from BLE Server")
+            y_vec[-1] = temperature_C
+            readings_vec = live_plotter(x_vec,y_vec,readings_vec, "Temperature Real-Time Data from BLE Server")
             y_vec = np.append(y_vec[1:],0.0)
         except KeyboardInterrupt:
             break;

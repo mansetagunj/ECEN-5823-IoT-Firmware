@@ -12,6 +12,12 @@ The BLE Client project flushes out data using UART and the python script "temper
 The plotter looks like:
 ![Plotter Image](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/blob/master/Wireless%20Health%20Thermometer%20BLE%20Client/Plots_snap.png)
 
+The BLE Client LCD display:
+![Plotter Image](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/blob/master/Wireless%20Health%20Thermometer%20BLE%20Client/BLE_Client.jpg)
+
+The BLE Server LCD display:
+![Plotter Image](https://github.com/mansetagunj/ECEN-5823-IoT-Firmware/blob/master/Wireless%20Health%20Thermometer%20BLE%20Client/BLE_Server.jpg)
+
 Tools and development boards used: 
 
 1. Simplicity Studio V4.1.25
