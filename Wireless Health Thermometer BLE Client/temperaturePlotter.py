@@ -48,8 +48,11 @@ def signal_handler(sig, frame):
 
 def main():
     signal.signal(signal.SIGINT, signal_handler)
+    if (len(sys.argv) < 2):
+        print ("Enter COM Port number as: COMx") 
+        sys.exit(0)
 
-    serial_h = serial.Serial('COM3', 9600)
+    serial_h = serial.Serial(sys.argv[1], 9600)
     serial_h.flushInput()
 
     plt.style.use('ggplot')

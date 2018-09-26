@@ -23,6 +23,7 @@ lcdGraphics/glib \
 lcdGraphics \
 platform/Device/SiliconLabs/EFR32BG13P/Source/GCC \
 platform/Device/SiliconLabs/EFR32BG13P/Source \
+platform/emdrv/gpiointerrupt/src \
 platform/emdrv/sleep/src \
 platform/emlib/src \
 protocol/bluetooth/lib/EFR32BG13P/GCC \

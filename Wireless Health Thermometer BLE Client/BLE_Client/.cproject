@@ -32,7 +32,7 @@
 							<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.toolchain.debug.level.395101059" name="Debug Level" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.toolchain.debug.level" value="com.silabs.ide.si32.gcc.cdt.managedbuild.toolchain.debug.level.default" valueType="enumerated"/>
 							<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.usescript.477885626" name="Use custom linker script" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.linker.usescript" value="true" valueType="boolean"/>
 							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.GNU_ELF;com.silabs.ss.framework.debugger.core.BIN;com.silabs.ss.framework.debugger.core.HEX;com.silabs.ss.framework.debugger.core.S37;com.silabs.ss.framework.debugger.core.EBL;com.silabs.ss.framework.debugger.core.GBL" id="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.platform.base.1716234861" isAbstract="false" name="Debug Platform" osList="win32,linux,macosx" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.platform.base"/>
-							<builder buildPath="${workspace_loc:/soc-empty}/GNU ARM v7.2.1 - Default" id="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.builder.base.1074898276" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Si32 GNU ARM Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.builder.base">
+							<builder buildPath="${workspace_loc:/BLE_Client}/GNU ARM v7.2.1 - Default" id="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.builder.base.1074898276" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Si32 GNU ARM Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.target.gnu.builder.base">
 								<outputEntries>
 									<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="outputPath" name="GNU ARM v7.2.1 - Default"/>
 								</outputEntries>
@@ -41,37 +41,37 @@
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.misc.dialect.626023292" name="C Language Dialect" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.misc.dialect" value="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.misc.dialect.c99" valueType="enumerated"/>
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.floatingpoint.type.2103824361" name="Floating-Point ABI" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.floatingpoint.type" value="floatingpoint.type.softfp" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.include.paths.2035924471" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/common/bsp}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/Device/SiliconLabs/EFR32BG13P/Include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/CMSIS/Include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/common/drivers}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/common/halconfig}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/protocol/bluetooth/ble_stack/inc/soc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/EFR32BG13_BRD4104A/config}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/sleep/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/Device/SiliconLabs/EFR32BG13P/Source}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/radio/rail_lib/common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/protocol/bluetooth/ble_stack/inc/common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/uartdrv/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/gpiointerrupt/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/radio/rail_lib/chip/efr32}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/sleep/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/Device/SiliconLabs/EFR32BG13P/Source/GCC}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/app/bluetooth/common/stack_bridge}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/bootloader/api}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/halconfig/inc/hal-config}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/common/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/bootloader}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/lcdGraphics}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/common/bsp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/Device/SiliconLabs/EFR32BG13P/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/CMSIS/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/common/drivers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/common/halconfig}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/protocol/bluetooth/ble_stack/inc/soc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/EFR32BG13_BRD4104A/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/sleep/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/Device/SiliconLabs/EFR32BG13P/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/radio/rail_lib/common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/protocol/bluetooth/ble_stack/inc/common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/uartdrv/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/gpiointerrupt/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/radio/rail_lib/chip/efr32}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/sleep/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/Device/SiliconLabs/EFR32BG13P/Source/GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/app/bluetooth/common/stack_bridge}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/bootloader/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/halconfig/inc/hal-config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/common/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/bootloader}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/lcdGraphics}&quot;"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/platform/middleware/glib"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/platform/middleware/glib/dmd"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/platform/middleware/glib/glib"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/hardware/kit/EFR32BG13_BRD4104A/config"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/util/silicon_labs/silabs_core/graphics"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/hardware/kit/common/drivers"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emlib/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emlib/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emlib/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emlib/src}&quot;"/>
 								</option>
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.def.symbols.761248350" name="Defined symbols (-D)" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.c.compiler.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__HEAP_SIZE=0xD00"/>
@@ -87,37 +87,38 @@
 							<tool id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.assembler.base.1178429966" name="GNU ARM Assembler" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.assembler.base">
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.assembler.flags.813270098" name="Assembler flags" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.assembler.flags" value="-c -x assembler-with-cpp -mfpu=fpv4-sp-d16 -mfloat-abi=softfp" valueType="string"/>
 								<option id="gnu.both.asm.option.include.paths.1528622267" name="Include paths (-I)" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emlib/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/common/bsp}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/Device/SiliconLabs/EFR32BG13P/Include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/CMSIS/Include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/common/drivers}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/common/halconfig}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/protocol/bluetooth/ble_stack/inc/soc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emlib/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/hardware/kit/EFR32BG13_BRD4104A/config}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/sleep/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/Device/SiliconLabs/EFR32BG13P/Source}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/radio/rail_lib/common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/protocol/bluetooth/ble_stack/inc/common}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/uartdrv/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/gpiointerrupt/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/radio/rail_lib/chip/efr32}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/sleep/src}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/Device/SiliconLabs/EFR32BG13P/Source/GCC}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/app/bluetooth/common/stack_bridge}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/bootloader/api}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/halconfig/inc/hal-config}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/emdrv/common/inc}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/platform/bootloader}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/soc-empty/lcdGraphics}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emlib/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/common/bsp}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/Device/SiliconLabs/EFR32BG13P/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/CMSIS/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/common/drivers}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/common/halconfig}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/protocol/bluetooth/ble_stack/inc/soc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emlib/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/hardware/kit/EFR32BG13_BRD4104A/config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/sleep/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/Device/SiliconLabs/EFR32BG13P/Source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/radio/rail_lib/common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/protocol/bluetooth/ble_stack/inc/common}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/uartdrv/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/gpiointerrupt/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/radio/rail_lib/chip/efr32}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/sleep/src}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/Device/SiliconLabs/EFR32BG13P/Source/GCC}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/app/bluetooth/common/stack_bridge}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/bootloader/api}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/halconfig/inc/hal-config}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emdrv/common/inc}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/bootloader}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/lcdGraphics}&quot;"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/platform/middleware/glib"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/platform/middleware/glib/glib"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/platform/middleware/glib/dmd"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/hardware/kit/EFR32BG13_BRD4104A/config"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/util/silicon_labs/silabs_core/graphics"/>
 									<listOptionValue builtIn="false" value="D:/SiliconLabs/SimplicityStudio/v4/developer/sdks/gecko_sdk_suite/v2.3/hardware/kit/common/drivers"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/BLE_Client/platform/emlib/inc}&quot;"/>
 								</option>
 								<option id="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.as.def.symbols.1209585071" name="Defined symbols (-D)" superClass="com.silabs.ide.si32.gcc.cdt.managedbuild.tool.gnu.as.def.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__HEAP_SIZE=0xD00"/>
@@ -171,7 +172,7 @@
 	</storageModule>
 	<storageModule generalProj.esf.protocolIds="com.silabs.sdk.stack.super:2.3.1._1265011386.com.silabs.stack.ble:2.9.2.0_1917644800" generalProj.esf.protocolNames="ble" moduleId="com.silabs.ss.framework.ide.project.core.cpp" project.generation="13" projectCommon.boardIds="brd4104a:0.0.0.A00 brd4001a:0.0.0.A01" projectCommon.buildArtifactType="EXE" projectCommon.partId="mcu.arm.efr32.bg13.efr32bg13p632f512gm48" projectCommon.sdkId="com.silabs.sdk.stack.super:2.3.1._1265011386" projectCommon.toolchainId="com.silabs.ss.tool.ide.arm.toolchain.gnu.cdt:7.2.1.20170904"/>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="soc-empty.com.silabs.ss.framework.ide.project.core.cdt.cdtMbsProjectType.1656776869" name="SLS CDT Project" projectType="com.silabs.ss.framework.ide.project.core.cdt.cdtMbsProjectType"/>
+		<project id="BLE_Client.com.silabs.ss.framework.ide.project.core.cdt.cdtMbsProjectType.1656776869" name="SLS CDT Project" projectType="com.silabs.ss.framework.ide.project.core.cdt.cdtMbsProjectType"/>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="scannerConfiguration">
@@ -182,7 +183,7 @@
 	</storageModule>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="GNU ARM v7.2.1 - Default">
-			<resource resourceType="PROJECT" workspacePath="/soc-empty"/>
+			<resource resourceType="PROJECT" workspacePath="/BLE_Client"/>
 		</configuration>
 	</storageModule>
 </cproject>

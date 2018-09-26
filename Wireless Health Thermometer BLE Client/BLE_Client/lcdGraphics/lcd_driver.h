@@ -15,8 +15,10 @@
 #define LCD_ROW_BTADDR1      2    /* 2nd row, bt addr 0-2 bytes */
 #define LCD_ROW_BTADDR2      3    /* 3nd row, bt addr 3-5 bytes */
 #define LCD_ROW_CONNECTION   4    /* 4rd row, connection status */
-#define LCD_ROW_TEMPVALUE    5    /* 5th row, temp in C */
-#define LCD_ROW_MAX          5    /* total number of rows used */
+#define LCD_ROW_PASSKEY   	 5    /* 5th row, passkey */
+#define LCD_ROW_ACTION   	 6    /* 6th row, passkey confirm action */
+#define LCD_ROW_TEMPVALUE    7    /* 7th row, temp in C */
+#define LCD_ROW_MAX          7    /* total number of rows used */
 
 #define LCD_ROW_LEN        32   /* up to 32 characters per each row */
 

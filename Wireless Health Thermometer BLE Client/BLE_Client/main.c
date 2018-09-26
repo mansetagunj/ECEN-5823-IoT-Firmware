@@ -42,6 +42,7 @@
 #include <math.h>
 #include "lcd_driver.h"
 #include "retargetserial.h"
+#include "gpiointerrupt.h"
 
 /***********************************************************************************************//**
  * @addtogroup Application
@@ -90,13 +91,6 @@ uint8_t tempData[5] = {0};
 
 #define UINT32_TO_FLT(b)         (((float)((int32_t)(b) & 0x00FFFFFFU)) * (float)pow(10,((int32_t)(b) >> 24)))
 
-typedef union{
-
-	uint32_t tempData;
-	float tempC;
-}temp_t;
-
-temp_t tempC;
 
 // Gecko configuration parameters (see gecko_configuration.h)
 static const gecko_configuration_t config = {
@@ -115,6 +109,51 @@ static const gecko_configuration_t config = {
   .pa.input = GECKO_RADIO_PA_INPUT_VBAT, // Configure PA input to VBAT
 #endif // (HAL_PA_ENABLE) && defined(FEATURE_PA_HIGH_POWER)
 };
+
+volatile uint8_t buttonPressEvent = 0;
+
+uint8_t external_event = 0;
+
+#define PB0_PRESSED (1<<0)
+
+void buttonPushedCallback(uint8 pin)
+{
+	//CORE_AtomicDisableIrq();
+	if(pin == BSP_BUTTON0_PIN)
+	{
+		external_event |= PB0_PRESSED;
+		gecko_external_signal(external_event);
+	}
+	//CORE_AtomicEnableIrq();
+}
+
+void enable_button_interrupts()
+{
+	GPIO_PinModeSet(BSP_BUTTON0_PORT, BSP_BUTTON0_PIN, gpioModeInput, 0);
+	GPIO_PinModeSet(BSP_BUTTON1_PORT, BSP_BUTTON1_PIN, gpioModeInput, 0);
+
+	NVIC_ClearPendingIRQ(GPIO_EVEN_IRQn);
+	NVIC_EnableIRQ(GPIO_EVEN_IRQn);
+
+	/* configure interrupt for PB0 and PB1, both falling and rising edges */
+	GPIO_ExtIntConfig(BSP_BUTTON0_PORT, BSP_BUTTON0_PIN, BSP_BUTTON0_PIN, true, false, true);
+
+	/* register the callback function that is invoked when interrupt occurs */
+	GPIOINT_CallbackRegister(BSP_BUTTON0_PIN, buttonPushedCallback);
+}
+
+void disable_button_interrupts()
+{
+	GPIO_PinModeSet(BSP_BUTTON0_PORT, BSP_BUTTON0_PIN, gpioModeDisabled, 0);
+
+	NVIC_ClearPendingIRQ(GPIO_EVEN_IRQn);
+	NVIC_DisableIRQ(GPIO_EVEN_IRQn);
+
+	/* configure interrupt for PB0 and PB1, both falling and rising edges */
+	GPIO_ExtIntConfig(BSP_BUTTON0_PORT, BSP_BUTTON0_PIN, BSP_BUTTON0_PIN, true, false, false);
+
+}
+
 
 // Flag for indicating DFU Reset must be performed
 uint8_t boot_to_dfu = 0;
@@ -137,12 +176,15 @@ int main(void)
   RETARGET_SerialInit();
   RETARGET_SerialCrLf(true);
 
+  enable_button_interrupts();
+
   printf("\033[2J\033[H");
   printf("*******BLE CLIENT**********\n");
   LCD_init("BLE CLIENT");
 
   struct gecko_msg_system_get_bt_address_rsp_t *btAddrRsp;
   char btAddress[40] = {0};
+  bool waitingForConfirm = false;
   tempCharacteristic_UUID.len = 2;
   tempCharacteristic_UUID.data[0] = 0x1C;
   tempCharacteristic_UUID.data[1] = 0x2A;
@@ -175,8 +217,23 @@ int main(void)
 		  printf("BT ADDR:%s\n",btAddress);
 		  LCD_write(btAddress, LCD_ROW_BTADDR2);
 
+		  if(!GPIO_PinInGet(BSP_BUTTON1_PORT, BSP_BUTTON1_PIN))
+		  {
+			  /* delete all bondings to force the pairing process */
+			  gecko_cmd_sm_delete_bondings();
+			  printf("Delete all bondings\n");
+		  }
+		  else{
+			  printf("Not pressed\n");
+		  }
+
+		  /* enable bondable to accommodate certain mobile OS */
+		  gecko_cmd_sm_set_bondable_mode(1);
+
+		  gecko_cmd_sm_configure(0x0F, sm_io_capability_displayyesno); /* Numeric comparison */
+
 		  //connect to the server
-		  bd_addr serverAddr = { .addr = {0x75,0xf2,0xb5,0x57,0x0b,0x00}};
+		  bd_addr serverAddr = { .addr = {0xe7,0x30,0xef,0x57,0x0b,0x00}};
 		  printf("Connecting...\n");
 		  LCD_write("Connecting...", LCD_ROW_CONNECTION);
 		  struct gecko_msg_le_gap_connect_rsp_t *gecko_rsp_msg = gecko_cmd_le_gap_connect(serverAddr, 0 , 1);
@@ -206,14 +263,81 @@ int main(void)
 				servers[EVT_CONN_HANDLE(evt_le_connection_opened)].serverBTAddress.addr[0]
 			  );
 		LCD_write("Connected...", LCD_ROW_CONNECTION);
-		//gecko_cmd_gatt_discover_primary_services(servers[connectedServerIndex].connectionHandle);
-		uint8array thermUUID;
-		thermUUID.data[0] = 0x09;
-		thermUUID.data[1] = 0x18;
-		thermUUID.len = 2 ;
-		gecko_cmd_gatt_discover_primary_services_by_uuid(servers[EVT_CONN_HANDLE(evt_le_connection_opened)].connectionHandle,thermUUID.len, thermUUID.data);
-		printf("Discovering primary services\n");
+		if(evt->data.evt_le_connection_opened.bonding != 0xFF)
+		{
+			LCD_write("Connected/Bonded", LCD_ROW_CONNECTION);
+			LCD_write("", LCD_ROW_PASSKEY);
+			LCD_write("", LCD_ROW_ACTION);
+
+			disable_button_interrupts();
+
+			printf("Already bonded\n");
+			uint8array thermUUID;
+			thermUUID.data[0] = 0x09;
+			thermUUID.data[1] = 0x18;
+			thermUUID.len = 2 ;
+			gecko_cmd_gatt_discover_primary_services_by_uuid(servers[EVT_CONN_HANDLE(evt_le_connection_opened)].connectionHandle,thermUUID.len, thermUUID.data);
+			printf("Discovering primary services\n");
+		}
 		break;
+
+      case gecko_evt_sm_bonding_failed_id:
+    	  printf("Bonding failed with the client\n");
+    	  LCD_write("Bonding Failed", LCD_ROW_CONNECTION);
+    	  LCD_write("", LCD_ROW_PASSKEY);
+		  LCD_write("", LCD_ROW_ACTION);
+    	  waitingForConfirm = false;
+    	  break;
+
+      case gecko_evt_sm_bonded_id:
+    	  printf("Bonding complete with the client\n");
+    	  LCD_write("Connected/Bonded", LCD_ROW_CONNECTION);
+    	  LCD_write("", LCD_ROW_PASSKEY);
+    	  LCD_write("", LCD_ROW_ACTION);
+
+    	  disable_button_interrupts();
+
+    	  uint8array thermUUID;
+    	  thermUUID.data[0] = 0x09;
+    	  thermUUID.data[1] = 0x18;
+    	  thermUUID.len = 2 ;
+    	  printf("Discovering primary services\n");
+    	  gecko_cmd_gatt_discover_primary_services_by_uuid(servers[EVT_CONN_HANDLE(evt_sm_bonded)].connectionHandle,thermUUID.len, thermUUID.data);
+    	  break;
+
+      case gecko_evt_sm_confirm_bonding_id:
+    	  printf("Got Bonding Request. Accepting it.\n");
+    	  gecko_cmd_sm_bonding_confirm(evt->data.evt_sm_confirm_bonding.connection, 1);
+    	  break;
+
+      case gecko_evt_sm_confirm_passkey_id:
+    	  printf("Confirm passkey\n");
+    	  printf("Do you see the same passkey on the tablet: %lu (y/n)?\n",
+    			  evt->data.evt_sm_confirm_passkey.passkey);
+    	  char PASSKEY[10] = {0};
+    	  snprintf(PASSKEY, sizeof(PASSKEY),"KEY:%lu",evt->data.evt_sm_confirm_passkey.passkey);
+    	  LCD_write(PASSKEY, LCD_ROW_PASSKEY);
+    	  LCD_write("Press PB0 to confirm", LCD_ROW_ACTION);
+    	  LCD_write("Bonding...", LCD_ROW_CONNECTION);
+    	  printf("Press Button PB0 asap to confirm\n");
+    	  waitingForConfirm = true;
+    	  break;
+
+      case gecko_evt_system_external_signal_id:
+
+    	  printf("External Event\n");
+    	  if(waitingForConfirm && (evt->data.evt_system_external_signal.extsignals & PB0_PRESSED))
+    	  {
+    		  CORE_AtomicDisableIrq();
+    		  external_event &= ~PB0_PRESSED;
+    		  CORE_AtomicEnableIrq();
+    		  LCD_write("PB0 pressed", LCD_ROW_ACTION);
+    		  printf("PB0 pressed: Confirming the bonding with the client...\n");
+    		  gecko_cmd_sm_passkey_confirm(evt->data.evt_sm_confirm_bonding.connection, 1);
+    	  }
+    	  break;
+
+
 
       case gecko_evt_gatt_service_id:
     	  //servers[EVT_CONN_HANDLE(evt_gatt_service)].numOfServices = 0;
@@ -346,7 +470,11 @@ int main(void)
           /* Enter to DFU OTA mode */
           gecko_cmd_system_reset(2);
         } else {
+        	/* delete all bondings to force the pairing process */
+//        	gecko_cmd_sm_delete_bondings();
+//        	printf("Delete all bondings\n");
         	LCD_write("Disconnected..", LCD_ROW_CONNECTION);
+        	enable_button_interrupts();
         }
         break;
 

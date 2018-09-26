@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Custom BLE GATT--><gatt generic_attribute_service="true" header="gatt_db.h" name="Custom BLE GATT" out="gatt_db.c" prefix="gattdb_">
+  
+  <!--Generic Access-->
+  <service advertise="false" name="Generic Access" requirement="mandatory" sourceId="org.bluetooth.service.generic_access" type="primary" uuid="1800">
+    <informativeText>Abstract: The generic_access service contains generic information about the device. All available Characteristics are readonly. </informativeText>
+    
+    <!--Device Name-->
+    <characteristic id="device_name" name="Device Name" sourceId="org.bluetooth.characteristic.gap.device_name" uuid="2A00">
+      <informativeText/>
+      <value length="19" type="utf-8" variable_length="false">Thermometer Example</value>
+      <properties read="true" read_requirement="optional" write="true" write_requirement="optional"/>
+    </characteristic>
+    
+    <!--Appearance-->
+    <characteristic name="Appearance" sourceId="org.bluetooth.characteristic.gap.appearance" uuid="2A01">
+      <informativeText>Abstract: The external appearance of this device. The values are composed of a category (10-bits) and sub-categories (6-bits). </informativeText>
+      <value length="2" type="hex" variable_length="false">0003</value>
+      <properties const="true" const_requirement="optional" read="true" read_requirement="optional"/>
+    </characteristic>
+  </service>
+  
+  <!--Device Information-->
+  <service advertise="false" name="Device Information" requirement="mandatory" sourceId="org.bluetooth.service.device_information" type="primary" uuid="180A">
+    <informativeText>Abstract: The Device Information Service exposes manufacturer and/or vendor information about a device. Summary: This service exposes manufacturer information about a device. The Device Information Service is instantiated as a Primary Service. Only one instance of the Device Information Service is exposed on a device. </informativeText>
+    
+    <!--Manufacturer Name String-->
+    <characteristic name="Manufacturer Name String" sourceId="org.bluetooth.characteristic.manufacturer_name_string" uuid="2A29">
+      <informativeText>Abstract: The value of this characteristic is a UTF-8 string representing the name of the manufacturer of the device. </informativeText>
+      <value length="12" type="utf-8" variable_length="false">Silicon Labs</value>
+      <properties const="true" const_requirement="optional" read="true" read_requirement="optional"/>
+    </characteristic>
+  </service>
+  
+  <!--Health Thermometer-->
+  <service advertise="true" name="Health Thermometer" requirement="mandatory" sourceId="org.bluetooth.service.health_thermometer" type="primary" uuid="1809">
+    <informativeText>Abstract: The Health Thermometer service exposes temperature and other data from a thermometer intended for healthcare and fitness applications. Summary: The Health Thermometer service is instantiated as a Primary Service. There are one or more instantiations of the Health Thermometer service per device claiming conformance with this specification. </informativeText>
+    
+    <!--Temperature Measurement-->
+    <characteristic id="temperature_measurement" name="Temperature Measurement" sourceId="org.bluetooth.characteristic.temperature_measurement" uuid="2A1C">
+      <informativeText/>
+      <value length="5" type="utf-8" variable_length="false"/>
+      <properties authenticated_read="true" authenticated_read_requirement="optional"/>
+    </characteristic>
+  </service>
+  
+  <!--Silicon Labs OTA-->
+  <service advertise="false" name="Silicon Labs OTA" requirement="mandatory" sourceId="com.silabs.service.ota" type="primary" uuid="1D14D6EE-FD63-4FA1-BFA4-8F47B42119F0">
+    <informativeText>Abstract: The Silicon Labs OTA Service enables over-the-air firmware update of the device. </informativeText>
+    
+    <!--Silicon Labs OTA Control-->
+    <characteristic id="ota_control" name="Silicon Labs OTA Control" sourceId="com.silabs.characteristic.ota_control" uuid="F7BF3564-FB6D-4E53-88A4-5E37E0326063">
+      <informativeText>Abstract: Silicon Labs OTA Control. </informativeText>
+      <value length="1" type="user" variable_length="false"/>
+      <properties write="true" write_requirement="optional"/>
+    </characteristic>
+  </service>
+</gatt>
